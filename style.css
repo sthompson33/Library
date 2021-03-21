@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: transparent;
+}
+
+:root {
+    --cashmere: #CBC5C1;
+    --french-blue: #A2AAB0;
+    --white-wash: #EBECED;
+    --denim: #4C586F;
+    --gunmetal: #3E3E3B; 
+}
+
+body {
+    background-color: var(--denim);
+    font-family: 'Cinzel', serif;
+}
+
