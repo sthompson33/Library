@@ -8,7 +8,48 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    
+    <div class="side-pane">
+        <form>
+            <fieldset>
+                <legend>Add New</legend>
+                    <div class="title">
+                        <label>Title</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="author">
+                        <label>Author</label>
+                        <input type='text' required>
+                    </div>
+                    <div class="pages">
+                        <label>Pages</label>
+                        <input type="number" min="1" 
+                        oninput="this.value=this.value.slice(0, this.maxLength)" 
+                        maxLength="4" required>
+                    </div>
+                    <div class="radio">
+                        <label>Have Read</label>
+                        <input type="radio" id="yes" name="read" value="yes">
+                        <label for="yes">Yes</label>
+                        <input type="radio" id="no" name="read" value="no">
+                        <label for="no">No</label>
+                    </div>
+                    <button class="addBtn">ADD</button>    
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>Catalog</legend>
+                    <label>Total Books:</label>
+                    <label>10</label>
+                    <label>Total Read:</label>
+                    <label>5 ~ 50%</label>
+                    <label>Favorite Author:</label>
+            </fieldset>
+        </form> 
+    </div>
+    <div class="table-pane">
+        <h1>My Library</h1>
+    </div>
 </body>
 <script src="script.js"></script>
 </html>

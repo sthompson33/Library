@@ -16,7 +16,82 @@
 }
 
 body {
-    background-color: var(--denim);
+    display: flex;
+    background-color: var(--cashmere);
     font-family: 'Cinzel', serif;
 }
 
+.side-pane {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 35vw;
+    background-color: var(--denim);
+}
+
+form {
+    margin-top: 20px;
+    width: 75%;
+    font-size: 20px;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    color: var(--white-wash);
+    padding: 10px;
+}
+
+legend {
+    font-size: 25px;
+}
+
+.title, .author, .pages {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+input[type=text] {
+    width: 80%;
+    color: var(--white-wash);
+    font-size: large;
+    padding-left: 5px;
+    border: none;
+    border-bottom: solid 1px var(--white-wash);
+    background-color: var(--denim);
+}
+
+input[type=number] {
+    width: 70px;
+    color: var(--white-wash);
+    font-size: large;
+    padding-left: 5px;
+    border: none;
+    border-bottom: solid 1px var(--white-wash);
+    background-color: var(--denim);
+}
+
+.radio {
+    padding: 10px;
+}
+
+.addBtn {
+    background-color: var(--white-wash);
+    color: var(--denim);
+    font-weight: bold;
+    border: none;
+    margin: 10px;
+    width: 100px;
+    height: 30px;
+}
+
+button {
+    cursor: pointer;
+}
+
+h1 {
+    font-size: 75px;
+    color: var(--gunmetal);
+}
