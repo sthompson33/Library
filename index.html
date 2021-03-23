@@ -12,38 +12,44 @@
         <form>
             <fieldset>
                 <legend>Add New</legend>
-                    <div class="title">
-                        <label>Title</label>
-                        <input type="text" required>
-                    </div>
-                    <div class="author">
-                        <label>Author</label>
-                        <input type='text' required>
-                    </div>
-                    <div class="pages">
-                        <label>Pages</label>
-                        <input type="number" min="1" 
-                        oninput="this.value=this.value.slice(0, this.maxLength)" 
-                        maxLength="4" required>
-                    </div>
-                    <div class="radio">
-                        <label>Have Read</label>
-                        <input type="radio" id="yes" name="read" value="yes">
-                        <label for="yes">Yes</label>
-                        <input type="radio" id="no" name="read" value="no">
-                        <label for="no">No</label>
-                    </div>
-                    <button class="addBtn">ADD</button>    
+                <div class="title">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" autocomplete="off" required>
+                </div>
+                <div class="author">
+                    <label for="author">Author</label>
+                    <input type='text' id="author" autocomplete="off" required>
+                </div>
+                <div class="pages">
+                    <label for="pages">Pages</label>
+                    <input type="number" id="pages" min="1" 
+                    oninput="this.value=this.value.slice(0, this.maxLength)" 
+                    maxLength="4" required>
+                </div>
+                <div class="checkbox">
+                    <input type="checkbox" id="check">
+                    <label for="check">Have Read</label>
+                </div>
+                <div class="divBtn">
+                    <button type="submit" class="addBtn">Add New Book</button>
+                </div>    
             </fieldset>
         </form>
         <form>
             <fieldset>
                 <legend>Catalog</legend>
+                <div class="totalCount">
                     <label>Total Books:</label>
-                    <label>10</label>
+                    <div id="total">10</div>
+                </div>
+                <div class="totalRead">
                     <label>Total Read:</label>
-                    <label>5 ~ 50%</label>
+                    <div id='read'>5</div>
+                </div>
+                <div class="favorite">
                     <label>Favorite Author:</label>
+                    <div id="favorite">Frank Herbert</div>  
+                </div>
             </fieldset>
         </form> 
     </div>
