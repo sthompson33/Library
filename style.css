@@ -101,6 +101,27 @@ button {
     cursor: pointer;
 }
 
+.totalCount, .totalRead {
+    display: flex;
+}
+
+#total {
+    padding-left: 15px;
+}
+
+#read {
+    padding-left: 28px;
+}
+
+.favorite > label::before, .favorite > label::after {
+    content: '~';
+    padding: 0 8px;
+}
+
+#favorite {
+    text-align: center;
+}
+
 h1 {
     font-size: 75px;
     color: var(--gunmetal);
