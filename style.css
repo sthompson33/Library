@@ -21,6 +21,12 @@ body {
     font-family: 'Cinzel', serif;
 }
 
+button {
+    cursor: pointer;
+}
+
+/*Left side of screen*/
+
 .side-pane {
     display: flex;
     flex-direction: column;
@@ -88,17 +94,17 @@ input[type=checkbox] {
     width: 100%;
     height: 30px;
     background-color: var(--white-wash);
-    color: var(--denim);
+    color: var(--gunmetal);
     font-weight: bold;
     border: none;
 }
 
 .addBtn:hover {
-    
+   background-color: var(--cashmere);
 }
 
-button {
-    cursor: pointer;
+.addBtn:active {
+    transform: translateY(3px);
 }
 
 .totalCount, .totalRead {
@@ -113,16 +119,52 @@ button {
     padding-left: 28px;
 }
 
+.favorite {
+    margin-top: 20px;
+    text-align: center;
+}
+
 .favorite > label::before, .favorite > label::after {
     content: '~';
     padding: 0 8px;
 }
 
-#favorite {
-    text-align: center;
+/*Right side of screen*/
+
+.table-pane {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 70vw;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
     font-size: 75px;
     color: var(--gunmetal);
+    position: absolute;
+    top: 25px;
 }
+
+.table {
+    position: absolute;
+    top: 200px;
+}
+
+table {
+    table-layout: fixed;
+    width: 60vw;
+    text-align: center;
+}
+
+/*
+overflow-x hides long text entering another column
+ellipsis gives the ... notation
+*/
+td {
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    border-top: 1px solid black;
+}
+
