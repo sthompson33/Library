@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div class="side-pane">
+    <div class="left-pane">
         <form>
             <fieldset>
                 <legend>Add New</legend>
@@ -38,40 +38,51 @@
         <form>
             <fieldset>
                 <legend>Catalog</legend>
-                <div class="totalCount">
-                    <label>Total Books</label>
-                    <div id="total">01</div>
-                </div>
-                <div class="totalRead">
-                    <label>Total Read</label>
-                    <div id='read'>01&nbsp;&nbsp;&nbsp;<span id="percent">(100%)</span></div>
+                <div class="catalog">
+                    <div class="cell-border-white center">Total</div>
+                    <div class="cell-border-white center">Read</div>
+                    <div class="cell-border-white"></div>
+                    <div class="center">2</div>
+                    <div class="center">1</div>
+                    <div class="center">50%</div>
                 </div>
                 <div class="favorite">
                     <label>Favorite Author</label>
-                    <div id="favorite">Frank Herbert</div>  
+                    <div id="favorite">J.R.R. Tolkien</div>  
                 </div>
             </fieldset>
         </form> 
+        <footer>
+            <p>Stephen Thompson</p>
+            <a href="https://github.com/sthompson33/Library">
+                <img src="images/GitHub-Mark-Light-32px.png">
+            </a>
+        </footer>
     </div>
-    <div class="table-pane">
+    <div class="right-pane">
         <h1>My Library</h1>
-        <div class="table">
-            <table>
-                <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Pages</th>
-                    <th>Have Read</th>
-                    <th>Remove</th>
-                </tr>
-                <tr>
-                    <td>Dune</td>
-                    <td>Frank Herbert</td>
-                    <td>430</td>
-                    <td><button>Yes/No</button></td>
-                    <td><button>x</button></td>
-                </tr>
-            </table>
+        <div class="inventory">
+            <div class="cell-border-denim">
+                <button class="text-only">Title</button>
+            </div>
+            <div class="cell-border-denim">
+                <button class="text-only">Author</button>
+            </div>
+            <div class="cell-border-denim pages-grid">
+                <button class="text-only">Pages</button>
+            </div>
+            <div class="cell-border-denim center">Read</div>
+            <div class="cell-border-denim"></div>
+            <div>Dune</div>
+            <div>Frank Herbert</div>
+            <div class="center">444</div>
+            <button class="not-read"></button>
+            <div class="center">x</div>
+            <div>The Lord of The Rings</div>
+            <div>J.R.R. Tolkien</div>
+            <div class="center">1137</div>
+            <button class="have-read"></button>
+            <div class="center">x</div>
         </div>
     </div>
 </body>
