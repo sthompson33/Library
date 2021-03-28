@@ -62,7 +62,10 @@
     </div>
     <div class="right-pane">
         <h1>My Library</h1>
+        <div class="tooltip center" data-tooltip="Click Title, Author or Pages for sorting options!">!</div>
         <div class="inventory">
+            
+            <!--header-->
             <div class="cell-border-denim">
                 <button class="text-only">Title</button>
             </div>
@@ -74,16 +77,28 @@
             </div>
             <div class="cell-border-denim center">Read</div>
             <div class="cell-border-denim"></div>
+            
+            <!--first row-->
             <div>Dune</div>
             <div>Frank Herbert</div>
             <div class="center">444</div>
-            <button class="not-read"></button>
-            <div class="center">x</div>
+            <div class="read-wrap"><button class="not-read"></button></div>
+            <div class="center"><button class="text-only remove">x</button></div>
+            
+            <!--second row-->
             <div>The Lord of The Rings</div>
             <div>J.R.R. Tolkien</div>
             <div class="center">1137</div>
-            <button class="have-read"></button>
-            <div class="center">x</div>
+            <div class="read-wrap"><button class="have-read"></button></div>
+            <div class="center"><button class="text-only remove">x</button></div>
+            
+            <!--third row-->
+            <div>Leviathan Wakes</div>
+            <div>S.A. Corey</div>
+            <div class="center">311</div>
+            <div class="read-wrap"><button class="have-read"></button></div>
+            <div class="center"><button class="text-only remove">x</button></div>
+        
         </div>
     </div>
 </body>
