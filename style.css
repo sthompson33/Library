@@ -252,8 +252,16 @@ div[data-tooltip]:hover::after {
 .pages-grid {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.pages-grid > button {
+    padding: 0 5px 0 15px;
 }
 
 .remove:hover {
     color: firebrick;
 }
+
+
+
