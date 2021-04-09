@@ -208,11 +208,7 @@ table {
     color: var(--gunmetal);
 }
 
-tr:first-of-type {
-    border-bottom: solid 1px var(--denim);
-}
-
-tr:nth-child(even){
+#book-row > tr:nth-child(odd){
     background-color: var(--denim);
     color: var(--white-wash);
 }
@@ -241,13 +237,7 @@ th, td {
     color: var(--gunmetal);
 }
 
-.read-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.not-read {
+.not-read {    
     height: 20px;
     width: 20px;
     border-radius: 50%;

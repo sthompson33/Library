@@ -41,42 +41,43 @@ function addBookToLibrary() {
 }
 
 function updateInventory() {
-    console.log('do i run');
-    const inventory = document.getElementById('inventory');
+    const bookRow = document.getElementById('book-row');
     myLibrary.forEach(book => {
         
-        const titleDiv = document.createElement('div');
-        titleDiv.textContent = book.title;
+        const titleCell = document.createElement('td');
+        titleCell.textContent = book.title;
         
-        const authorDiv = document.createElement('div');
-        authorDiv.textContent = book.author;
+        const authorCell = document.createElement('td');
+        authorCell.textContent = book.author;
         
-        const pagesDiv = document.createElement('div');
-        pagesDiv.textContent = book.pages;
-        pagesDiv.classList.add('center');
+        const pagesCell = document.createElement('td');
+        pagesCell.textContent = book.pages;
+        pagesCell.classList.add('text-center');
 
-        const readDiv = document.createElement('div');
-        readDiv.classList.add('read-wrap');
+        const readCell = document.createElement('td');
+        readCell.classList.add('center-button');
         const readButton = document.createElement('button');
         if(book.checked) {
             readButton.classList.add('have-read');
         } else {
             readButton.classList.add('not-read');
         }
-        readDiv.append(readButton);
+        readCell.append(readButton);
 
-        const removeDiv = document.createElement('div');
-        removeDiv.classList.add('center');
+        const removeCell = document.createElement('td');
+        removeCell.classList.add('text-center');
         const removeButton = document.createElement('button');
         removeButton.classList.add('text-only', 'remove');
         removeButton.textContent = 'x';
-        removeDiv.append(removeButton);
+        removeCell.append(removeButton);
 
-        inventory.append(titleDiv);
-        inventory.append(authorDiv);
-        inventory.append(pagesDiv);
-        inventory.append(readDiv);
-        inventory.append(removeDiv);
-
+        const tableRow = document.createElement('tr');
+        tableRow.append(titleCell);
+        tableRow.append(authorCell);
+        tableRow.append(pagesCell);
+        tableRow.append(readCell);
+        tableRow.append(removeCell);
+        
+        bookRow.append(tableRow);
     })
 }
