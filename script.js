@@ -16,7 +16,6 @@ const addButton = document.getElementById('addBtn');
 addButton.addEventListener('click', ()=> {
     if(!checkEmptyFields()) {
         addBookToLibrary();
-        updateInventory();
     }
 });
 
@@ -27,7 +26,9 @@ function checkEmptyFields() {
         if(field.value == "") {
             field.style.borderColor = "rgb(130, 25, 25)";
             isEmpty = true;
-        } 
+        } else {
+            field.style.borderColor = 'transparent';
+        }
     });
     return isEmpty;
 }
@@ -38,9 +39,22 @@ function addBookToLibrary() {
     const pagesValue = pagesField.value;
     const checkValue = checkbox.checked;
     myLibrary.push(new Book(titleValue, authorValue, pagesValue, checkValue));   
+    eraseFields();
+    updateInventory();
+}
+
+function eraseFields() {
+    titleField.value = '';
+    authorField.value = '';
+    pagesField.value = '';
+    checkbox.checked = false;
 }
 
 function updateInventory() {
+    /*erase current list of books displayed on screen first
+    to avoid displaying all of array over again*/ 
+    eraseCurrentBookList();
+
     const bookRow = document.getElementById('book-row');
     myLibrary.forEach(book => {
         
@@ -80,4 +94,11 @@ function updateInventory() {
         
         bookRow.append(tableRow);
     })
+}
+
+function eraseCurrentBookList() {
+    const bookList = document.getElementById('book-row');
+    while(bookList.firstChild) {
+        bookList.removeChild(bookList.firstChild);
+    }
 }
