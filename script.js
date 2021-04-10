@@ -3,7 +3,7 @@ const authorField = document.getElementById('authorField');
 const pagesField = document.getElementById('pagesField');
 const checkbox = document.getElementById('check');
 
-let myLibrary = [];
+let myLibrary = [new Book("Dune", "Frank Herbert", 412, false)];
 
 function Book(title, author, pages, checked) {
     this.title = title;
@@ -41,6 +41,7 @@ function addBookToLibrary() {
     myLibrary.push(new Book(titleValue, authorValue, pagesValue, checkValue));   
     eraseFields();
     updateInventory();
+    updateCatalog();
 }
 
 function eraseFields() {
@@ -101,4 +102,20 @@ function eraseCurrentBookList() {
     while(bookList.firstChild) {
         bookList.removeChild(bookList.firstChild);
     }
+}
+
+const totalBooks = document.getElementById('totalBooks');
+const totalRead = document.getElementById('totalRead');
+const percentageRead = document.getElementById('percentageRead');
+
+function updateCatalog() {
+    const totalCount = myLibrary.length;
+    totalBooks.textContent = totalCount;
+    const readCount = myLibrary.reduce((total, book) => {
+        return total + (book.checked == true);
+    }, 0);
+    totalRead.textContent = readCount;
+    percentageRead.textContent = `${Math.round((readCount / totalCount) * 100)}%`;
+    console.log(totalCount);
+    console.log(readCount);
 }
