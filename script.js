@@ -12,6 +12,9 @@ function Book(title, author, pages, checked) {
     this.checked = checked;
 }
 
+
+
+/*Functions for Add New section */
 const addButton = document.getElementById('addBtn');
 addButton.addEventListener('click', ()=> {
     if(!checkEmptyFields()) {
@@ -40,7 +43,7 @@ function addBookToLibrary() {
     const checkValue = checkbox.checked;
     myLibrary.push(new Book(titleValue, authorValue, pagesValue, checkValue));   
     eraseFields();
-    updateInventory();
+    displayLibraryList();
     updateCatalog();
 }
 
@@ -51,7 +54,58 @@ function eraseFields() {
     checkbox.checked = false;
 }
 
-function updateInventory() {
+
+
+/*Update Catalog functions*/
+
+function updateCatalog() {
+    updateReadCount();
+    
+    /*Find the number of times each author was listed in the myLibrary 
+      Display the author(s) with the most counts as favorite */
+    const authorCount = myLibrary.reduce((obj, book) => {
+        if(!obj[book.author]) {
+            obj[book.author] = 0;
+        }
+        obj[book.author]++;
+        return obj;
+    }, {});
+
+    let maxCount = Math.max(...Object.values(authorCount));
+    let mostFrequent = Object.keys(authorCount).filter(k => authorCount[k] === maxCount);
+    
+    const favorites = document.getElementById('favorite');
+    while(favorites.firstChild) {
+        favorites.removeChild(favorites.firstChild);
+    }
+
+    mostFrequent.forEach(fav => {
+        const div = document.createElement('div');
+        div.append(fav);
+        favorites.append(div);
+    })
+}
+
+function updateReadCount() {
+    const totalBooks = document.getElementById('totalBooks');
+    const totalRead = document.getElementById('totalRead');
+    const percentageRead = document.getElementById('percentageRead');
+    
+    const totalCount = myLibrary.length;
+    totalBooks.textContent = totalCount;
+    
+    const readCount = myLibrary.reduce((total, book) => {
+        return total + (book.checked == true);
+    }, 0);
+    totalRead.textContent = readCount;
+    percentageRead.textContent = `${Math.round((readCount / totalCount) * 100)}%`;
+}
+
+
+
+/*Functions for right side pane */
+
+function displayLibraryList() {
     /*erase current list of books displayed on screen first
     to avoid displaying all of array over again*/ 
     eraseCurrentBookList();
@@ -64,7 +118,7 @@ function updateInventory() {
         
         const authorCell = document.createElement('td');
         authorCell.textContent = book.author;
-        
+
         const pagesCell = document.createElement('td');
         pagesCell.textContent = book.pages;
         pagesCell.classList.add('text-center');
@@ -104,18 +158,7 @@ function eraseCurrentBookList() {
     }
 }
 
-const totalBooks = document.getElementById('totalBooks');
-const totalRead = document.getElementById('totalRead');
-const percentageRead = document.getElementById('percentageRead');
 
-function updateCatalog() {
-    const totalCount = myLibrary.length;
-    totalBooks.textContent = totalCount;
-    const readCount = myLibrary.reduce((total, book) => {
-        return total + (book.checked == true);
-    }, 0);
-    totalRead.textContent = readCount;
-    percentageRead.textContent = `${Math.round((readCount / totalCount) * 100)}%`;
-    console.log(totalCount);
-    console.log(readCount);
-}
+
+
+
