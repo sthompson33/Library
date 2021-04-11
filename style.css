@@ -209,7 +209,7 @@ table {
 }
 
 #book-row > tr:nth-child(odd){
-    background-color: var(--french-blue);
+    background-color: var(--denim);
     color: var(--white-wash);
 }
 
@@ -222,7 +222,7 @@ td {
     height: 30px;
     text-overflow: ellipsis;
     overflow: hidden;
-    border: solid 1px var(--french-blue);
+    border: solid 1px var(--denim);
 }
 
 th, td {
