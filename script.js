@@ -158,7 +158,48 @@ function eraseCurrentBookList() {
     }
 }
 
+/*Functions for sorting options */
 
+const titleButton = document.getElementById('titleBtn');
+titleButton.addEventListener('click', (e) => {
+    sortChange(e.target.id);
+});
 
+const authorButton = document.getElementById('authorBtn');
+authorButton.addEventListener('click', (e) => {
+    sortChange(e.target.id);
+});
+
+const pagesButton = document.getElementById('pagesBtn');
+pagesButton.addEventListener('click', (e) => {
+    sortChange(e.target.id);
+});
+
+function sortChange(buttonClicked) {
+    const button = buttonClicked.slice(0, -3);
+    const arrowUp = document.getElementById(`${button}-up`);
+    const arrowDown = document.getElementById(`${button}-down`);
+    
+    if (arrowUp.style.display == "none" && arrowDown.style.display == "none") {
+        clearArrows();
+        arrowUp.style.display = "initial";
+        //ascending function
+    } else if (arrowUp.style.display == "initial") {
+        clearArrows();
+        arrowDown.style.display = "initial";
+        //descending function
+    } else {
+        clearArrows();
+    }
+}
+
+//more efficient having array created at compile time instead of everytime 
+//the function is called?
+const polylineArray = Array.from(document.getElementsByTagName('polyline'));
+function clearArrows() {
+    polylineArray.forEach(svg => {
+        svg.style.display = "none";
+    })
+}
 
 
