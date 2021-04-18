@@ -3,7 +3,7 @@ const authorField = document.getElementById('authorField');
 const pagesField = document.getElementById('pagesField');
 const checkbox = document.getElementById('check');
 
-let myLibrary = [new Book("Dune", "Frank Herbert", 412, false)];
+let myLibrary = [new Book("dune", "frank herbert", 412, false)];
 
 function Book(title, author, pages, checked) {
     this.title = title;
@@ -15,6 +15,7 @@ function Book(title, author, pages, checked) {
 
 
 /*Functions for Add New section */
+
 const addButton = document.getElementById('addBtn');
 addButton.addEventListener('click', ()=> {
     if(!checkEmptyFields()) {
@@ -37,14 +38,14 @@ function checkEmptyFields() {
 }
 
 function addBookToLibrary() {
-    const titleValue = titleField.value;
-    const authorValue = authorField.value;
-    const pagesValue = pagesField.value;
+    const titleValue = titleField.value.toLowerCase();
+    const authorValue = authorField.value.toLowerCase();
+    const pagesValue = Number(pagesField.value);
     const checkValue = checkbox.checked;
     myLibrary.push(new Book(titleValue, authorValue, pagesValue, checkValue));   
-    eraseFields();
-    displayLibraryList();
+    displayLibraryList(myLibrary);
     updateCatalog();
+    eraseFields();
 }
 
 function eraseFields() {
@@ -56,7 +57,7 @@ function eraseFields() {
 
 
 
-/*Update Catalog functions*/
+/*Functions for Catalog section */
 
 function updateCatalog() {
     updateReadCount();
@@ -105,13 +106,13 @@ function updateReadCount() {
 
 /*Functions for right side pane */
 
-function displayLibraryList() {
+function displayLibraryList(libraryList) {
     /*erase current list of books displayed on screen first
     to avoid displaying all of array over again*/ 
     eraseCurrentBookList();
 
     const bookRow = document.getElementById('book-row');
-    myLibrary.forEach(book => {
+    libraryList.forEach(book => {
         
         const titleCell = document.createElement('td');
         titleCell.textContent = book.title;
@@ -158,22 +159,20 @@ function eraseCurrentBookList() {
     }
 }
 
+
+
 /*Functions for sorting options */
 
 const titleButton = document.getElementById('titleBtn');
-titleButton.addEventListener('click', (e) => {
-    sortChange(e.target.id);
-});
-
 const authorButton = document.getElementById('authorBtn');
-authorButton.addEventListener('click', (e) => {
-    sortChange(e.target.id);
-});
-
 const pagesButton = document.getElementById('pagesBtn');
-pagesButton.addEventListener('click', (e) => {
-    sortChange(e.target.id);
-});
+const buttonList = [titleButton, authorButton, pagesButton];
+
+buttonList.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        sortChange(e.target.id);
+    })
+})
 
 function sortChange(buttonClicked) {
     const button = buttonClicked.slice(0, -3);
@@ -183,13 +182,14 @@ function sortChange(buttonClicked) {
     if (arrowUp.style.display == "none" && arrowDown.style.display == "none") {
         clearArrows();
         arrowUp.style.display = "initial";
-        //ascending function
+        sortAscending(button);
     } else if (arrowUp.style.display == "initial") {
         clearArrows();
         arrowDown.style.display = "initial";
-        //descending function
+        sortDescending(button);
     } else {
         clearArrows();
+        displayLibraryList(myLibrary);
     }
 }
 
@@ -200,6 +200,22 @@ function clearArrows() {
     polylineArray.forEach(svg => {
         svg.style.display = "none";
     })
+}
+
+function sortAscending(key) {
+    let sortedUpList = myLibrary.slice();
+    sortedUpList.sort((first, second) => {
+       return first[key] > second[key] ? 1 : -1;
+    });
+    displayLibraryList(sortedUpList);
+}
+
+function sortDescending(key) {
+    let sortedDownList = myLibrary.slice();
+    sortedDownList.sort((first, second) => {
+       return first[key] > second[key] ? -1 : 1;
+    });
+    displayLibraryList(sortedDownList);
 }
 
 
