@@ -108,14 +108,13 @@
             </tr>
             <!--Start of Book rows-->
             <tbody id="book-row">
-                <tr>
+                <tr data-count="0"> 
                     <td>dune</td>
                     <td>frank herbert</td>
                     <td class="text-center">412</td>
-                    <td class="center-button"><button class="not-read"></button></td>
-                    <td class="text-center"><button class="text-only remove">x</button></td>
+                    <td class="center-button"><button onclick="readStatus(this)" class="not-read"></button></td>
+                    <td class="text-center"><button  onclick ="removeBook(this)" class="text-only remove">x</button></td>
                 </tr>
-                
             </tbody>
         </table>
     </div>

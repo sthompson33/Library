@@ -3,13 +3,14 @@ const authorField = document.getElementById('authorField');
 const pagesField = document.getElementById('pagesField');
 const checkbox = document.getElementById('check');
 
-let myLibrary = [new Book("dune", "frank herbert", 412, false)];
+let myLibrary = [new Book("dune", "frank herbert", 412, false, 0)];
 
-function Book(title, author, pages, checked) {
+function Book(title, author, pages, checked, bookNumber) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.checked = checked;
+    this.bookNumber = bookNumber;
 }
 
 
@@ -37,12 +38,14 @@ function checkEmptyFields() {
     return isEmpty;
 }
 
+let count = 1;
 function addBookToLibrary() {
     const titleValue = titleField.value.toLowerCase();
     const authorValue = authorField.value.toLowerCase();
     const pagesValue = Number(pagesField.value);
     const checkValue = checkbox.checked;
-    myLibrary.push(new Book(titleValue, authorValue, pagesValue, checkValue));   
+    myLibrary.push(new Book(titleValue, authorValue, pagesValue, checkValue, count));   
+    count++;
     displayLibraryList(myLibrary);
     updateCatalog();
     eraseFields();
@@ -99,7 +102,7 @@ function updateReadCount() {
         return total + (book.checked == true);
     }, 0);
     totalRead.textContent = readCount;
-    percentageRead.textContent = `${Math.round((readCount / totalCount) * 100)}%`;
+    percentageRead.textContent = (totalCount == 0) ? '0%' : `${Math.round((readCount / totalCount) * 100)}%`;
 }
 
 
@@ -127,6 +130,7 @@ function displayLibraryList(libraryList) {
         const readCell = document.createElement('td');
         readCell.classList.add('center-button');
         const readButton = document.createElement('button');
+        readButton.setAttribute("onclick", "readStatus(this)");
         if(book.checked) {
             readButton.classList.add('have-read');
         } else {
@@ -137,11 +141,13 @@ function displayLibraryList(libraryList) {
         const removeCell = document.createElement('td');
         removeCell.classList.add('text-center');
         const removeButton = document.createElement('button');
+        removeButton.setAttribute("onclick", "removeBook(this)");
         removeButton.classList.add('text-only', 'remove');
         removeButton.textContent = 'x';
         removeCell.append(removeButton);
 
         const tableRow = document.createElement('tr');
+        tableRow.setAttribute("data-count", book.bookNumber);
         tableRow.append(titleCell);
         tableRow.append(authorCell);
         tableRow.append(pagesCell);
@@ -159,9 +165,44 @@ function eraseCurrentBookList() {
     }
 }
 
+function readStatus(element) {
+    myLibrary.forEach((book) => {
+        if(book.bookNumber == findRowNumber(element)) {
+            if(book.checked) {
+                book.checked = false;
+                element.classList.remove('have-read');
+                element.classList.add('not-read');
+            } else {
+                book.checked = true;
+                element.classList.remove('not-read');
+                element.classList.add('have-read');
+            }
+        }
+    })
+    updateReadCount();
+}
+
+function removeBook(element) {
+    myLibrary.splice(findRowNumber(element), 1);
+    updateBookNumbers();
+    displayLibraryList(myLibrary);
+    updateCatalog();
+}
+
+function updateBookNumbers() {
+    let totalBooks = myLibrary.length;
+    for(let i = 0; i < totalBooks; i++) {
+        myLibrary[i].bookNumber = i;
+    }
+    count = totalBooks;
+}
+
+function findRowNumber(element) { 
+    return element.parentNode.parentNode.getAttribute('data-count');
+}
 
 
-/*Functions for sorting options */
+/*Functions for the different sorting options */
 
 const titleButton = document.getElementById('titleBtn');
 const authorButton = document.getElementById('authorBtn');
