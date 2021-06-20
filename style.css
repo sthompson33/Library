@@ -275,6 +275,34 @@ th, td {
 }
 
 @media (max-width: 1250px) {
- 
+    body {
+        flex-direction: column;
+    }
+
+    .left-pane {
+        display: flex;
+        flex-direction: row;
+        position: sticky;
+        height: 40vh;
+        width: 100%;
+        top: 0px;
+    }
+
+    .right-pane {
+        position: relative;
+        width: 100vw;
+        left: 0px;
+    }
   
+    fieldset {
+        margin: 30px;
+    }
+
+    footer {
+        display: none;
+    }
+
+    .tooltip {
+        display: none;
+    }
 }
