@@ -19,6 +19,7 @@ body {
     display: flex;
     background-color: var(--cashmere);
     font-family: 'Cinzel', serif;
+    position: relative;
 }
 
 button {
@@ -35,6 +36,7 @@ button {
     width: 30vw;
     background-color: var(--denim);
     position: fixed;
+    margin: 0 auto;
 }
 
 form {
@@ -122,7 +124,7 @@ input[type=checkbox] {
 }
 
 .favorite {
-    margin-top: 20px;
+    margin: 20px 0 0 0;
     text-align: center;
 }
 
@@ -150,13 +152,14 @@ footer p, footer a {
 /*Right side of screen*/
 
 .right-pane {
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 70vw;
-    margin-left: 30vw;
+    left: 30vw;
 }
 
 h1 {
@@ -169,7 +172,7 @@ h1 {
 .tooltip {
     position: absolute;
     top: 19vh;
-    left: 38vw;
+    left: 7vw;
     height: 20px;
     width: 20px;
     border-radius: 50%;
@@ -215,6 +218,7 @@ table {
 
 th {
     font-weight: normal;
+    white-space: nowrap;
 }
 
 td {
@@ -268,4 +272,9 @@ th, td {
 .center-button {
     text-align: center;
     line-height: 10px;
+}
+
+@media (max-width: 1250px) {
+ 
+  
 }

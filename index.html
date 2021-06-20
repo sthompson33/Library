@@ -9,16 +9,16 @@
 </head>
 <body>
     <div class="left-pane">
-        <form>
+        <form autocomplete="off">
             <fieldset>
                 <legend>Add New</legend>
                 <div class="title">
                     <label for="titleField">Title</label>
-                    <input type="text" id="titleField" autocomplete="off" required>
+                    <input type="text" id="titleField" required>
                 </div>
                 <div class="author">
                     <label for="authorField">Author</label>
-                    <input type='text' id="authorField" autocomplete="off" required>
+                    <input type='text' id="authorField" required>
                 </div>
                 <div class="pages">
                     <label for="pagesField">Pages</label>
@@ -36,6 +36,10 @@
                 </div>    
             </fieldset>
         </form>
+        <!-- 
+            following form tag unnecessary, styling issues when removed
+            needs to be looked into
+        -->
         <form>
             <fieldset>
                 <legend>Catalog</legend>
@@ -68,8 +72,8 @@
         <table>
             <!--Set width of columns for table-->
             <colgroup>
-                <col span="1" style="width: 30%;">
-                <col span="1" style="width: 30%;">
+                <col span="1" style="width: 20%;">
+                <col span="1" style="width: 20%;">
                 <col span="1" style="width: 15%;">
                 <col span="1" style="width: 10%;">
                 <col span="1" style="width: 10%;">
